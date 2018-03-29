@@ -97,8 +97,8 @@
 
         $('.unlock-pack-inner').append(
             "<p class='amount'>" +
-                "<font color='green'>Foi verificado(s): " + codesDB.length + " Códigos." + "</font><br />" +
-                "<font color='red'>Falta verificar: " + codes.length + " Códigos.</font>" +
+                "<font color='green'>Foi verificado(s): " + codesDB.length + " Código(s)." + "</font><br />" +
+                "<font color='red'>Falta verificar: " + codes.length + " Código(s).</font>" +
             "</p>"
         );
 
