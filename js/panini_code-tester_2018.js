@@ -91,16 +91,33 @@
         'ZPID-S1DM-13WL', // 071
     ];
 
+    var globalTranslations = {
+        "en-US": {
+            "checked": "It has been checked: %d Codes.",
+            "unchecked": "Missing Check: %d Codes."
+        },
+        "pt-BR": {
+            "checked": "Foi verificado(s): %d Código(s).",
+            "unchecked": "Falta verificar: %d Código(s)."
+        }
+    }
+    
     setTimeout(function() {
         var codesDB = JSON.parse(GM_getValue('codesDB', '[]'));
         var codes = (allCheckedCodes.concat(allPossibleCodes)).filter(function(item) { return codesDB.indexOf(item) === -1; });
+        var userLang = navigator.language || navigator.userLanguage;
 
-        $('.unlock-pack-inner').append(
-            "<p class='amount'>" +
-                "<font color='green'>Foi verificado(s): " + codesDB.length + " Código(s)." + "</font><br />" +
-                "<font color='red'>Falta verificar: " + codes.length + " Código(s).</font>" +
-            "</p>"
-        );
+        if (userLang == 'pt-BR' || userLang == 'en-US') {
+            $('.unlock-pack-inner').append(
+                "<br><span class='amount'>" + globalTranslations[userLang].checked.replace('%d',codesDB.length) + "</span><br/>" +
+                "<span class='error'>" + globalTranslations[userLang].unchecked.replace('%d',codes.length) + "</span>"
+            );
+        } else {
+            $('.unlock-pack-inner').append(
+                "<br><span class='amount'>" + globalTranslations['en-US'].checked.replace('%d',codesDB.length) + "</span><br/>" +
+                "<span class='error'>" + globalTranslations['en-US'].unchecked.replace('%d',codes.length) + "</span>"
+            );
+        }
 
         if(codes.length > 0) {
             $('#code').val(codes[0]);
