@@ -13,7 +13,7 @@
 // Versions
 // 0.1 - 71 Checked Codes + 24.360 Possible Codes to Test
 // 0.2 - Shows the number of codes remaining to be tested
-// 0.3 - 79 Checked Codes + 24.360 Possible Codes to Test
+// 0.3 - +8 Checked Codes! Total: 79 Checked Codes
 
 (function() {
     'use strict';
