@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PANINI Code Tester 2018 - By: FabianoLothor
 // @namespace    http://www.fabianolothor.com.br/
-// @version      0.2
+// @version      0.3
 // @description  Enjoy!
 // @author       FabianoLothor <fabiano.lothor@gmail.com>
 // @match        https://paninistickeralbum.fifa.com/enter_code
