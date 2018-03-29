@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PANINI Code Tester 2018 - By: FabianoLothor
 // @namespace    http://www.fabianolothor.com.br/
-// @version      0.1
+// @version      0.2
 // @description  Enjoy!
 // @author       FabianoLothor <fabiano.lothor@gmail.com>
 // @match        https://paninistickeralbum.fifa.com/enter_code
@@ -12,6 +12,7 @@
 
 // Versions
 // 0.1 - 71 Checked Codes + 24.360 Possible Codes to Test
+// 0.2 - Shows the number of codes remaining to be tested
 
 (function() {
     'use strict';
@@ -94,7 +95,12 @@
         var codesDB = JSON.parse(GM_getValue('codesDB', '[]'));
         var codes = (allCheckedCodes.concat(allPossibleCodes)).filter(function(item) { return codesDB.indexOf(item) === -1; });
 
-        console.log("Falta checar: " + codes.length + " códigos.");
+        $('.unlock-pack-inner').append(
+            "<p class='amount'>" +
+                "Missing Check: " + codes.length + " Codes." + "<br />" +
+                "Falta Checar: " + codes.length + " Códigos." +
+            "</p>"
+        );
 
         if(codes.length > 0) {
             $('#code').val(codes[0]);
