@@ -13,6 +13,7 @@
 // Versions
 // 0.1 - 71 Checked Codes + 24.360 Possible Codes to Test
 // 0.2 - Shows the number of codes remaining to be tested
+// 0.3 - 79 Checked Codes + 24.360 Possible Codes to Test
 
 (function() {
     'use strict';
@@ -71,24 +72,32 @@
         '2V96K-QR', // 051
         '2XGW3-QR', // 052
         '2ZW78-QR', // 053
-        '2018-COKE-GAME', // 054
-        '2018-COOL-GAME', // 055
-        'COKE-BEST-GOAL', // 056
-        'COKE-FAIR-PLAY', // 057
-        'FIFA-COCA-COLA', // 058
-        'FIFA-FAIR-PLAY', // 059
-        'FIFA-FOOT-BALL', // 060
-        'FOOT-BALL-LOVE', // 061
-        'FREE-FIFA-GIFT', // 062
-        'FREE-FIFA-PACK', // 063
-        'GIFT-CODE-2018', // 064
-        'HAVE-NICE-WC18', // 065
-        'KEEP-FREE-2018', // 066
-        'OPEN-FIFA-PACK', // 067
-        'OPEN-YOUR-GIFT', // 068
-        'OPEN-YOUR-PACK', // 069
-        'W1PZ-V1UR-D197', // 070
-        'ZPID-S1DM-13WL', // 071
+        '26VU5-QR', // 054
+        '2GFB2-QR', // 055
+        '2D73X-QR', // 056
+        '256JM-QR', // 057
+        '2J8VB-QR', // 058
+        '24Q3G-QR', // 059
+        '2MW7J-QR', // 060
+        '2P8UC-QR', // 061
+        '2018-COKE-GAME', // 062
+        '2018-COOL-GAME', // 063
+        'COKE-BEST-GOAL', // 064
+        'COKE-FAIR-PLAY', // 065
+        'FIFA-COCA-COLA', // 066
+        'FIFA-FAIR-PLAY', // 067
+        'FIFA-FOOT-BALL', // 068
+        'FOOT-BALL-LOVE', // 069
+        'FREE-FIFA-GIFT', // 070
+        'FREE-FIFA-PACK', // 071
+        'GIFT-CODE-2018', // 072
+        'HAVE-NICE-WC18', // 073
+        'KEEP-FREE-2018', // 074
+        'OPEN-FIFA-PACK', // 075
+        'OPEN-YOUR-GIFT', // 076
+        'OPEN-YOUR-PACK', // 077
+        'W1PZ-V1UR-D197', // 078
+        'ZPID-S1DM-13WL', // 079
     ];
 
     setTimeout(function() {
