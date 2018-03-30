@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PANINI Code Tester 2018 - By: FabianoLothor
 // @namespace    http://www.fabianolothor.com.br/
-// @version      0.3
+// @version      0.4
 // @description  Enjoy!
 // @author       FabianoLothor <fabiano.lothor@gmail.com>
 // @match        https://paninistickeralbum.fifa.com/enter_code
@@ -14,9 +14,53 @@
 // 0.1 - 71 Checked Codes + 24.360 Possible Codes to Test
 // 0.2 - Shows the number of codes remaining to be tested
 // 0.3 - +8 Checked Codes! Total: 79 Checked Codes
+// 0.4 - Support to Translations - @renatodolce
 
 (function() {
     'use strict';
+    
+    setTimeout(function() {
+        var userLang = navigator.language || navigator.userLanguage;
+
+        var codesDB = JSON.parse(GM_getValue('codesDB', '[]'));
+        var codes = (allCheckedCodes.concat(allPossibleCodes)).filter(function(item) { return codesDB.indexOf(item) === -1; });
+
+        console.log('lang', globalTranslations['sadsadas']);
+
+        if (!(typeof globalTranslations[userLang] === 'undefined')) {
+            $('.unlock-pack-inner').append("<br />" +
+                "<span class='amount'>" + globalTranslations[userLang].checked.replace('%d', codesDB.length) + "</span><br />" +
+                "<span class='error'>" + globalTranslations[userLang].unchecked.replace('%d', codes.length) + "</span>"
+            );
+        } else {
+            $('.unlock-pack-inner').append("<br />" +
+                "<span class='amount'>" + globalTranslations['en-US'].checked.replace('%d', codesDB.length) + "</span><br />" +
+                "<span class='error'>" + globalTranslations['en-US'].unchecked.replace('%d', codes.length) + "</span>"
+            );
+        }
+
+        if(codes.length > 0) {
+            $('#code').val(codes[0]);
+
+            codesDB.push(codes[0]);
+            GM_setValue('codesDB', JSON.stringify(codesDB));
+
+            setTimeout(function() { $('input').last().click(); }, 500);
+        } else {
+            $('#code').val('CHECAGEM-FINALIZADA');
+        }
+    }, 500);
+
+    var globalTranslations = {
+        "en-US": {
+            "checked": "%d Verified Code(s).",
+            "unchecked": "Missing Check: %d Code(s)."
+        },
+        "pt-BR": {
+            "checked": "%d Código(s) Verificado(s).",
+            "unchecked": "Falta Verificar: %d Código(s)."
+        }
+    }
 
     var allCheckedCodes = [
         'ARG-1978', // 001
@@ -99,46 +143,6 @@
         'W1PZ-V1UR-D197', // 078
         'ZPID-S1DM-13WL', // 079
     ];
-
-    var globalTranslations = {
-        "en-US": {
-            "checked": "It has been checked: %d Codes.",
-            "unchecked": "Missing Check: %d Codes."
-        },
-        "pt-BR": {
-            "checked": "Foi verificado(s): %d Código(s).",
-            "unchecked": "Falta verificar: %d Código(s)."
-        }
-    }
-    
-    setTimeout(function() {
-        var codesDB = JSON.parse(GM_getValue('codesDB', '[]'));
-        var codes = (allCheckedCodes.concat(allPossibleCodes)).filter(function(item) { return codesDB.indexOf(item) === -1; });
-        var userLang = navigator.language || navigator.userLanguage;
-
-        if (userLang == 'pt-BR' || userLang == 'en-US') {
-            $('.unlock-pack-inner').append(
-                "<br><span class='amount'>" + globalTranslations[userLang].checked.replace('%d',codesDB.length) + "</span><br/>" +
-                "<span class='error'>" + globalTranslations[userLang].unchecked.replace('%d',codes.length) + "</span>"
-            );
-        } else {
-            $('.unlock-pack-inner').append(
-                "<br><span class='amount'>" + globalTranslations['en-US'].checked.replace('%d',codesDB.length) + "</span><br/>" +
-                "<span class='error'>" + globalTranslations['en-US'].unchecked.replace('%d',codes.length) + "</span>"
-            );
-        }
-
-        if(codes.length > 0) {
-            $('#code').val(codes[0]);
-
-            codesDB.push(codes[0]);
-            GM_setValue('codesDB', JSON.stringify(codesDB));
-
-            setTimeout(function() { $('input').last().click(); }, 500);
-        } else {
-            $('#code').val('CHECAGEM-FINALIZADA');
-        }
-    }, 500);
 
     var allPossibleCodes = [
         "13WL-2018-BALL",
